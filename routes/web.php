@@ -17,8 +17,12 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/addcategory', function () {
-    return view('addcategory');
+Route::get('/addCategory', function () {
+    return view('addCategory');
+});
+
+Route::get('/addProduct', function () {
+    return view('addProduct');
 });
 
 Auth::routes();
