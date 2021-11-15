@@ -1,3 +1,5 @@
+@extends('layout')
+@section('content')
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
@@ -128,5 +130,29 @@
                 </div>
             </div>
         </div>
+
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-sm-12">
+                    <a class="nav-link" href="{{url('/home')}}"><img src="{{ asset('images/big-mobile-deals-in-geekbuyings-birthday-promotion.jpg')}}" alt="" class="img-fluid" width=100%></a>
+                </div>                        
+            </div>
+                
+            <div class="row" style="margin-top:20px;">
+                <div class="col-sm-4" style="text-align: center">
+                        <img src="{{ asset('images/iphone-13-pro-max-blue-select.png')}}" width=50% alt="" class="img-fluid">
+                        <p>IPHONE</p>
+                </div>
+                <div class="col-sm-4" style="text-align: center">
+                        <img src="{{ asset('images/samsung-galaxy-a52-5g-header.jpg')}}" width=50% alt="" class="img-fluid">
+                        <p>SAMSUNG</p>
+                </div>
+                <div class="col-sm-4" style="text-align: center">
+                        <img src="{{ asset('images/list-img-silver.png')}}" width=50% alt="" class="img-fluid">
+                        <p>HUAWEI</p>
+                </div>                        
+            </div>
     </body>
 </html>
+
+@endsection
