@@ -5,7 +5,8 @@
     <div class="col-sm-6">
         <br><br>
         <h3>Create New Product</h3>   
-    <form action="">
+    <form action="{{route('addProduct')}}" method="POST" enctype="multipart/form-data">
+        @CSRF
         <div class="form-group">
             <label for="productDescription">Product Description</label>
             <input type="text" class="form-control" id="productDescription" name="productDescription">
@@ -34,6 +35,7 @@
             <label for="productCategory">Product Category</label>
             <input type="text" class="form-control" id="productCategory" name="productCategory">
         </div>
+        <button type="submit" class="btn btn-primary">Add New</button> 
     </form>
 </div>
 @endsection

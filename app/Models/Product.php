@@ -10,6 +10,6 @@ class Product extends Model
     use HasFactory;
     protected $fillable=['name','description','price','image','quantity','category'];
     public function product(){
-        return $this->belongsTo('App\Models\Product');
+        return $this->belongsTo('App\Models\Category');
     }
 }
