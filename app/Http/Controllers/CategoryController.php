@@ -3,21 +3,23 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use DB;//import Database Library //step1
-use app\Model\Category;//import category model
+use DB; //import database library
+use App\Models\Category; //import category models
+
 
 class CategoryController extends Controller
 {
-    public function add(){ //step2
-        $r=request();//received the data by GET or POST mothod $_POST['name']
-        $addCategroy=Category::create([
+    //
+    public function add(){
+        $r=request(); //received the data by GET or POST method $_POST['name']
+        $addCategory=Category::create([
             'name'=>$r->categoryName,
         ]);
         Return redirect()->route('showCategory');
     }
 
     public function view(){
-        $viewCategory=Category::all();//generate SQL select * from categories
+        $viewCategory=Category::all(); //generate SQL select * from categories
         Return view('showCategory')->with('categories',$viewCategory);
     }
 }

@@ -8,13 +8,11 @@
         <form action="{{route('addCategory')}}" method="POST">
             @CSRF
             <div class="form-group">
-                <lable for="categoryname">Category Name></lable>
-                <input type="text" class="form-control" id="categoryName" name="categoryName">
-            </div>
-            <button type="submit" class="btn btn-primary">Add New</button>
+                <label for="categoryName">Category Name</label>
+                <input type="text" class="from-control" id="categoryName" name="categoryName">
+</div>
+    <button type="submit" class="btn btn-primary">Add New</button>
         </form>
-        <br><br>
     </div>
-    <div class="col-sm-3"></div>
 </div>
 @endsection

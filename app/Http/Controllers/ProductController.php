@@ -8,25 +8,24 @@ use App\Models\Product;
 
 class ProductController extends Controller
 {
-    public function add(){ //step2
-        $r=request();//received the data by GET or POST mothod
-        $images=$r->file('productImage');
-        $image->move('image',$image->getClienOriginalName());
-        //image is the location
-        $imagesName=$images->getClienoriginalName();
+    public function add(){
+        $r=request();  //received the data by GET or POST mothod 
+        $image=$r->file('productImage');        
+        $image->move('images',$image->getClientOriginalName());   //images is the location                
+        $imageName=$image->getClientOriginalName(); 
         $addProduct=Product::create([
-            'name'=>$r->ProductName,
+            'name'=>$r->productName,
             'description'=>$r->productDescription,
             'quantity'=>$r->productQuantity,
             'price'=>$r->productPrice,
-            'Categroy'=>$r->CategoryID,
-            'images'=>$imageName,
+            'CategoryID'=>$r->CategoryID,
+            'image'=>$imageName,
         ]);
         Return redirect()->route('showProduct');
     }
 
     public function view(){
         $viewProduct=Product::all();
-        Return view('showProduct')->with('product',$viewProduct);
+        Return view('showProduct')->with('products',$viewProduct);
     }
 }

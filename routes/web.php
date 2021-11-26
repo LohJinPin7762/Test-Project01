@@ -24,13 +24,14 @@ Route::get('/addCategory', function () {
 Route::get('/addProduct', function () {
     return view('addProduct');
 });
+
 Route::post('/addCategory/store',[App\Http\Controllers\CategoryController::class,'add'])->name('addCategory');
 
 Route::post('/addProduct/store',[App\Http\Controllers\ProductController::class,'add'])->name('addProduct');
 
-Route::get('/showCategory/store',[App\Http\Controllers\ProductController::class,'add'])->name('addCategory');
+Route::get('/showCategory',[App\Http\Controllers\CategoryController::class,'view'])->name('showCategory');
 
-Route::get('/showProduct/store',[App\Http\Controllers\ProductController::class,'add'])->name('addProduct');
+Route::get('/showProduct',[App\Http\Controllers\ProductController::class,'view'])->name('showProduct');
 
 Auth::routes();
 
