@@ -21,6 +21,7 @@ class ProductController extends Controller
             'CategoryID'=>$r->CategoryID,
             'image'=>$imageName,
         ]);
+        Session::flash('success',"Product create successfully");
         Return redirect()->route('showProduct');
     }
 
