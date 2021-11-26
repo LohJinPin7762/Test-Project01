@@ -35,4 +35,12 @@ class ProductController extends Controller
 
         Return view('showProduct')->with('products',$viewProduct);
     }
+
+    public function delete($id){ 
+
+        $deleteProduct=Product::find($id);
+        $deleteProduct->delete();
+        Session::flash('success',"Product was delete successfully!");
+        Return redirect()->route('showProduct');
+    }
 }
