@@ -22,7 +22,7 @@ Route::get('/addCategory', function () {
 });
 
 Route::get('/addProduct', function () {
-    return view('addProduct');
+    return view('addProduct',['categoryID'=>App\Models\Category::all()]);
 });
 
 Route::post('/addCategory/store',[App\Http\Controllers\CategoryController::class,'add'])->name('addCategory');
