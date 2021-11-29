@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use DB;
 use App\Models\Product;
 use Session;
+use App\Models\Category;
 
 class ProductController extends Controller
 {
@@ -42,5 +43,13 @@ class ProductController extends Controller
         $deleteProduct->delete();
         Session::flash('success',"Product was delete successfully!");
         Return redirect()->route('showProduct');
+    }
+
+    public function edit($id){
+
+        $products=Product::all()->where('id',;$id);
+        Return view('editProduct')->with('products',$products)
+        ->with('Categories',Category::all());
+
     }
 }

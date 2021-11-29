@@ -35,6 +35,8 @@ Route::get('/showProduct',[App\Http\Controllers\ProductController::class,'view']
 
 Route::get('/deleteProduct/{id}',[App\Http\Controllers\ProductController::class,'delete'])->name('deleteProduct');
 
+Route::get('editProduct/{id}',[App\Http\Controllers\ProductController::class,'edit'])->name('editProduct');//http://localhost/editProduct.php?id=22 localhost/editProduct/22
+
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
