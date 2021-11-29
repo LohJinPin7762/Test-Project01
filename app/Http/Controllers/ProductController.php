@@ -23,7 +23,7 @@ class ProductController extends Controller
             'CategoryID'=>$r->CategoryID,
             'image'=>$imageName,
         ]);
-        Session::flash('success',"Product create successfully");
+        Session::flash('success',"Product create successfully!");
         Return redirect()->route('showProduct');
     }
 
@@ -37,8 +37,9 @@ class ProductController extends Controller
         Return view('showProduct')->with('products',$viewProduct);
     }
 
-    public function delete($id){ 
 
+    public function delete($id){
+        
         $deleteProduct=Product::find($id);
         $deleteProduct->delete();
         Session::flash('success',"Product was delete successfully!");
@@ -47,9 +48,9 @@ class ProductController extends Controller
 
     public function edit($id){
 
-        $products=Product::all()->where('id',;$id);
+        $products=Product::all()->where('id',$id);
         Return view('editProduct')->with('products',$products)
-        ->with('Categories',Category::all());
-
+                                  ->with('categoryID',Category::all());
     }
+
 }
