@@ -5,7 +5,7 @@
     <div class="col-sm-6">
         <br><br>
         <h3>Update Product</h3>
-        <form action="{{ route('addProduct') }}" method="POST" enctype="multipart/form-data" >
+        <form action="{{ route('updateProduct') }}" method="POST" enctype="multipart/form-data" >
            @CSRF
 
            @foreach($products as $product)
