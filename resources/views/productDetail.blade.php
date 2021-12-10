@@ -6,8 +6,11 @@
     <div class="col-sm-10">
         <div class="card-body">
             <div class='row'>
+                <form class="{{ route('add.to.cart)  }}" method="POST">
+                    @CSRF
                 <div class="col-med-3">
                     <h5 class="card-title">{{$product->name}}</h5>
+                    <input type="hidden" name="productID" value="{{$product->id}}">
                     <img src="{{asset('images/')}}/{{$product->image}}" alt="" width="100%" class="img-fluid">
                 </div>
                 <div class="col-med-9">
@@ -17,6 +20,7 @@
                     <div class="card-heading">RM{{$product->price}}</div>
                     <button class="btn btn-danger btn-xs" type="submit">Add to Cart</button>
                 </div>
+                </form> 
             </div>
         </div>
     </div>
