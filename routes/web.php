@@ -17,31 +17,40 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/addCategory', function () {
+Route::get('/addCategory',function() {
     return view('addCategory');
 });
 
-Route::get('/addProduct', function () {
-    return view('addProduct',['categoryID'=>App\Models\Category::all()]);
+Route::get('/addProduct',function() {
+    return view('addProduct',['categoryID'=>App\Models\Category::all()]); //get All data and pass to addProduct page as variable(categoryID)
 });
-Route::post('/addCategory/store',[App\Http\Controllers\CategoryController::class,'add'])->name('addCategory');
 
-Route::post('/addProduct/store',[App\Http\Controllers\ProductController::class,'add'])->name('addProduct');
+Route::post('/addCategory/store',[App\Http\Controllers\CategoryController::class,'add'])->
+name('addCategory');
 
-Route::get('/showCategory',[App\Http\Controllers\CategoryController::class,'view'])->name('showCategory');
+Route::post('/addproduct/store',[App\Http\Controllers\ProductController::class,'add'])->
+name('addProduct');
 
-Route::get('/showProduct',[App\Http\Controllers\ProductController::class,'view'])->name('showProduct');
+Route::get('/showCategory',[App\Http\Controllers\CategoryController::class,'view'])->
+name('showCategory');
 
-Route::get('/deleteProduct/{id}',[App\Http\Controllers\ProductController::class,'delete'])->name('deleteProduct');
+Route::get('/showProduct',[App\Http\Controllers\ProductController::class,'view'])->
+name('showProduct');
 
-Route::get('editProduct/{id}',[App\Http\Controllers\ProductController::class,'edit'])->name('editProduct');
-// http://localhost/editProduct.php?id=22   localhost/editProduct/22
+Route::get('/deleteProduct/{id}',[App\Http\Controllers\ProductController::class,'delete'])->
+name('deleteProduct');
 
-Route::post('/updateProduct', [App\Http\Controllers\ProductController::class, 'update'])->name('updateProduct');
+Route::get('/editProduct/{id}',[App\Http\Controllers\ProductController::class,'edit'])->
+name('editProduct');
 
-Route::get('/productDetail/{id}',[App\Http\Controllers\ProductController::class,'productdetail'])->name('product.detail');
+Route::post('/updateProduct', [App\Http\Controllers\ProductController::class, 'update'])->
+name('updateProduct');
 
-Route::post('/addCart', [App\Http\Controllers\CartController::class, 'add'])->name('add.to.cart');
+Route::get('/productDetail/{id}',[App\Http\Controllers\ProductController::class,'productdetail'])->
+name('product.detail');
+
+Route::post('/addCart', [App\Http\Controllers\CartController::class, 'add'])->
+name('add.to.cart');
 
 Auth::routes();
 
