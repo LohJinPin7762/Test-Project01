@@ -46,14 +46,14 @@ class ProductController extends Controller
         Return redirect()->route('showProduct');
     }
 
-    public function edit($id){
+    public function edit($id){ //Part A
 
         $products=Product::all()->where('id',$id);
         Return view('editProduct')->with('products',$products)
                                   ->with('categoryID',Category::all());
     }
 
-    public function update(){
+    public function update(){ //Part B
         $r=request();
         $products =Product::find($r->productID);
 
@@ -70,6 +70,13 @@ class ProductController extends Controller
         $products->quantity=$r->productQuantity;
         $products->CategoryID=$r->CategoryID;
         $products->save();
+
+        Return redirect()->route('showProduct');
+    }
+
+    public function productdetail($id){
+        $products=Product::all()->where('id',$id);
+        return view('productDetail')->with('products',$products);
     }
 
 }
