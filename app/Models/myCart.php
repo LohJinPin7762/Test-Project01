@@ -11,10 +11,10 @@ class myCart extends Model
     protected $fillable=['productID','quantity','userID','orderID'];
 
     public function product(){
-        return $this->belongTo('App\product');
+        return $this->belongsTo('App\Product');
     }
 
     public function user(){
-        return $this->belongTo('App\User');
+        return $this->belongsTo('App\User');
     }
 }

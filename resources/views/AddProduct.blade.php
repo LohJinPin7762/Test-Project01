@@ -34,7 +34,7 @@
                     @foreach($categoryID as $category)
                         <option value="{{$category->id}}">{{$category->name}}</option>
                     @endforeach
-                </select>               
+                </select>              
             </div>
             <button type="submit" class="btn btn-primary">Add New</button>
         </form>

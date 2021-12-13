@@ -12,51 +12,52 @@
   </head>
   <body>
     @if(Session::has('success'))
-      <div class="alert alert-success" role="alert">
-        {{Session::get('success')}}
+      <div class="alert alert-success">
+        {{ Session::get('success')  }}
       </div>
     @endif
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <img src="{{asset('images/logo.png')}}" class="rounded-circle" alt="Southern Online" width="30">&nbsp;
-  <a class="navbar-brand" href="#">Southern Online</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
 
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
-        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Products</a>
-      </li>
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Category
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="#">Phone</a>
-          <a class="dropdown-item" href="#">Desktops/Laptop</a>
-          <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="#">Computer Hardware</a>
-        </div>
-      </li>      
-    </ul>
-    <form class="form-inline my-2 my-lg-0" action="" method="POST">
-      @csrf
-      <input class="form-control mr-sm-2" name="keyword" type="search" placeholder="Search" aria-label="Search">
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-    </form>&nbsp;
-    <button type="button" class="btn btn-success">
-      My Cart <span class="badge bg-danger">1</span>
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <img src="{{asset('images/logo.png')}}" class="rounded-circle" alt="Southern Online" width="30">&nbsp;
+    <a class="navbar-brand" href="#">Southern Online</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
     </button>
-  </div>
-</nav>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="{{ url('/')}}">Home <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+        <a class="nav-link" href="{{ url('/viewProducts')}}">Products</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Category
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="#">Phone</a>
+            <a class="dropdown-item" href="#">Desktops/Laptop</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="#">Computer Hardware</a>
+          </div>
+        </li>      
+      </ul>
+      <form class="form-inline my-2 my-lg-0" action="" method="POST">
+        @csrf
+        <input class="form-control mr-sm-2" name="keyword" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+      </form>&nbsp;
+      <button type="button" class="btn btn-success" >
+        My Cart <span class="badge bg-danger">1</span>
+      </button>
+    </div>
+  </nav>
 
 @yield('content')
 
-@yield('')
 
  <!-- footer -->
  <!-- Footer -->
