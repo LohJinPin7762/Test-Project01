@@ -8,7 +8,7 @@
                 <thead>
                     <tr>
                         <td>ID</td>
-                        <td>Category Name</td>
+                        <td>Name</td>
                         <td>Action</td>
                     </tr>
                 </thead>
