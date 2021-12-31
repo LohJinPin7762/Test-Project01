@@ -9,6 +9,7 @@ use Auth;
 use DB;
 use App\Models\myCart;
 use App\Models\myOrder;
+use Notification;
 
 
 class PaymentController extends Controller
@@ -47,10 +48,15 @@ class PaymentController extends Controller
             $cart=myCart::find($value); //get cart item record
             $cart->orderID=$orderID->id; //update/bind orderID to cart item record
             $cart->save();
-
         }
+
+        $email='fangxianglun@gmail.com'; //receiver email
+        //define notification file location and pass email.
+        Notification::route('mail',$email)->notify(new \App\Notifications\orderPaid($email));
+
         Session::flash('success','Order successfully!');
-        return redirect()->route('my.order');
+        return back();
+        //return redirect()->route('my.order');
     }
 
     public function viewOrder(){
