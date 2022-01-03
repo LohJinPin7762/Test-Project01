@@ -98,4 +98,14 @@ class ProductController extends Controller
 
         return view('viewProducts')->with('products',$products);
     }
+
+    public function viewPhone(){
+        $products=DB::table('products')->where('CategoryID','=','1')->get();
+        return view('viewProducts')->with('products',$products);
+    }
+
+    public function viewComputer(){
+        $products=DB::table('products')->where('CategoryID','=','2')->orWhere('CategoryID','=','3')->get();
+        return view('viewProducts')->with('products',$products);
+    }
 }

@@ -38,7 +38,15 @@ class CartController extends Controller
         //->get();
         ->paginate(5); //five item in one page only
 
-        return view('myCart')->with('carts',$carts);
+        $noItem=DB::table('my_carts')
+        ->leftjoin('products','products.id','=','my_carts.productID')
+        ->select(DB::raw('COUNT(*) as count_item'))
+        ->where('my_carts.orderID','=','') //if '' means no payment made
+        ->where('my_carts.userID','=',Auth::id())
+        ->groupBy('my_carts.userID')
+        ->get();
+
+        return view('myCart')->with('carts',$carts)->with('noItem',$noItem);
     }
 
     public function delete($id){

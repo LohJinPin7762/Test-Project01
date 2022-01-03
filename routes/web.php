@@ -57,6 +57,10 @@ Route::get('/myOrder',[App\Http\Controllers\PaymentController::class,'viewOrder'
 
 Route::get('/pdfReport',[App\Http\Controllers\PDFController::class,'pdfReport'])->name('pdfReport');
 
+Route::get('/phone',[App\Http\Controllers\ProductController::class,'viewPhone'])->name('phone.products');
+
+Route::get('/computer',[App\Http\Controllers\ProductController::class,'viewComputer'])->name('computer.products');
+
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
