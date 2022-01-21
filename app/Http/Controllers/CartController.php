@@ -38,15 +38,9 @@ class CartController extends Controller
         //->get();
         ->paginate(5); //five item in one page only
 
-        $noItem=DB::table('my_carts')
-        ->leftjoin('products','products.id','=','my_carts.productID')
-        ->select(DB::raw('COUNT(*) as count_item'))
-        ->where('my_carts.orderID','=','') //if '' means no payment made
-        ->where('my_carts.userID','=',Auth::id())
-        ->groupBy('my_carts.userID')
-        ->get();
+        $this->cartItem(); //call function
 
-        return view('myCart')->with('carts',$carts)->with('noItem',$noItem);
+        return view('myCart')->with('carts',$carts);
     }
 
     public function delete($id){
@@ -55,5 +49,24 @@ class CartController extends Controller
 
         Session::flash('success',"Product was deleted successfully!");
         return redirect()->route('show.my.cart');
+    }
+
+    //((update when)) login, view cart, add/delete cart, make payment 
+    public function cartItem(){
+
+        $cartItem=0;
+        $noItem=DB::table('my_carts')
+        ->leftjoin('products','products.id','=','my_carts.productID')
+        ->select(DB::raw('COUNT(*) as count_item'))
+        ->where('my_carts.orderID','=','') //if '' means no payment made
+        ->where('my_carts.userID','=',Auth::id())
+        ->groupBy('my_carts.userID')
+        ->first();
+        if($noItem){
+            $cartItem=$noItem->count_item;
+        }
+        Session()->put('cartItem',$cartItem);//assign value to session variable cartItem
+        //assign cartItem value to Session variable,
+        //layout can retrieve the value from session variable to display in all pages
     }
 }

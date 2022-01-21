@@ -3,24 +3,34 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use DB; //import database library
-use App\Models\Category; //import category models
+use DB; //database
+use App\Models\Category;
 use Session;
+use Auth;
 
 class CategoryController extends Controller
 {
-    //
+    public function __construct(){
+        $this->middleware('auth');
+    }
+
+    public function index(){
+        return view('addCategory');
+    }
+
+    
     public function add(){
-        $r=request(); //received the data by GET or POST method $_POST['name']
-        $addCategory=Category::create([
+        $r=request(); //receive data from GET / POST method  $_POST['name']
+        $addCategory=Category::create([  //pre-define function in DB 
             'name'=>$r->categoryName,
-        ]);
-        Session::flash('success',"Category create successfully");
-        Return redirect()->route('showCategory');
+        ]); 
+        Session::flash('success',"Category create successfully!");
+        Return redirect()->route('showCategory'); 
     }
 
     public function view(){
-        $viewCategory=Category::all(); //generate SQL select * from categories
+        $viewCategory = Category::all(); //auto generate SQL select*from categories
         Return view('showCategory')->with('categories',$viewCategory);
+        //categories use for @foreach in blade.php
     }
 }

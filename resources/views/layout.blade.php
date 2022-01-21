@@ -38,8 +38,8 @@
             Category
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="{{route('phone.products')}}">Phone</a>
-            <a class="dropdown-item" href="{{('computer.products')}}">Desktops/Laptop</a>
+            <a class="dropdown-item" href="{{route('phone.products')}}" method="POST">Phone</a>
+            <a class="dropdown-item" href="{{route('comp.products')}}">Desktops/Laptop</a>
             <div class="dropdown-divider"></div>
             <a class="dropdown-item" href="#">Computer Hardware</a>
           </div>
@@ -50,18 +50,15 @@
         <input class="form-control mr-sm-2" name="keyword" type="search" placeholder="Search" aria-label="Search">
         <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
       </form>&nbsp;
-      @guest
-      <button type="button" class="btn btn-success" onclick="window.location.href='{{route('show.my.cart')}}'">
-        My Cart
+      @guest 
+      <button type="button" class="btn btn-success" onClick="window.location.href='{{route('show.my.cart')}}'">My Cart</button>
+      @else 
+      <button type="button" class="btn btn-success" onClick="window.location.href='{{route('show.my.cart')}}'">
+        My Cart 
         <span class="badge bg-danger">
-          @foreach($noItem as $c)
-            {{ $c->count_item }}
-          @endforeach
+        <!-- -->
+        {{ Session::get('cartItem') }}
         </span>
-      </button>
-      @else
-      <button type="button" class="btn btn-success" onclick="window.location.href='{{route('show.my.cart')}}'">
-        My Cart <span class="badge bg-danger">1</span>
       </button>
       @endguest
     </div>
